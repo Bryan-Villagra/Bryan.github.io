@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entorno Virtual de Aprendizaje - Unidad 2 Probabilidad: Variables Aleatorias" />
+  <title>EVA - Unidad 2 | Variables Aleatorias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">P</span>
+      <span>Probabilidad · Unidad 2</span>
+    </a>
+
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">☰</button>
+
+    <nav id="menu" class="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#variables">Variables</a>
+      <a href="#discretas">Discretas</a>
+      <a href="#continuas">Continuas</a>
+      <a href="#medidas">Medidas</a>
+      <a href="#laboratorio">R</a>
+      <a href="#evaluacion">Evaluación</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero section">
+      <div class="hero-copy">
+        <span class="eyebrow">ENTORNO VIRTUAL DE APRENDIZAJE</span>
+        <h1>Variables Aleatorias</h1>
+        <p class="hero-subtitle">
+          Un recorrido interactivo para comprender variables aleatorias discretas y continuas,
+          funciones de probabilidad y densidad, y sus principales características.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#variables">Comenzar recorrido</a>
+          <a class="btn secondary" href="#evaluacion">Ir a la evaluación</a>
+        </div>
+
+        <div class="authors">
+          <strong>Integrantes:</strong>
+          Gómez Segura, Ana Isabel · Villagra, Brian Gustavo · Ríos, Luz Morena
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="formula-card card-a">P(X = x)</div>
+        <div class="formula-card card-b">F(x) = P(X ≤ x)</div>
+        <div class="formula-card card-c">σ = √Var(X)</div>
+      </div>
+    </section>
+
+    <section class="section intro-strip">
+      <div class="section-heading">
+        <span class="eyebrow">OBJETIVO DEL EVA</span>
+        <h2>Aprender paso a paso</h2>
+        <p>
+          Los contenidos están organizados de forma secuenciada: primero se presenta el concepto
+          de variable aleatoria, luego se diferencian las variables discretas y continuas,
+          y finalmente se estudian esperanza, varianza, desvío estándar, covarianza y correlación.
+        </p>
+      </div>
+
+      <div class="path-grid">
+        <a class="path-card" href="#variables">
+          <span>01</span>
+          <h3>Variable aleatoria</h3>
+          <p>Concepto y clasificación.</p>
+        </a>
+        <a class="path-card" href="#discretas">
+          <span>02</span>
+          <h3>Discretas</h3>
+          <p>Probabilidad puntual y acumulativa.</p>
+        </a>
+        <a class="path-card" href="#continuas">
+          <span>03</span>
+          <h3>Continuas</h3>
+          <p>Densidad, área y probabilidad.</p>
+        </a>
+        <a class="path-card" href="#medidas">
+          <span>04</span>
+          <h3>Características</h3>
+          <p>Medidas para describir variables.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="variables" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">MÓDULO 1</span>
+        <h2>¿Qué es una variable aleatoria?</h2>
+        <p>
+          Es una función matemática que asigna un valor numérico real a cada resultado posible
+          del espacio muestral de un experimento aleatorio.
+        </p>
+      </div>
+
+      <div class="concept-grid two">
+        <article class="concept-card">
+          <div class="icon">🎲</div>
+          <h3>¿Por qué se llama aleatoria?</h3>
+          <p>
+            Porque el valor exacto que tomará no se conoce antes de realizar el experimento.
+            Sin embargo, sí podemos conocer sus posibles valores y la distribución de
+            probabilidades asociada.
+          </p>
+        </article>
+
+        <article class="concept-card">
+          <div class="icon">🔎</div>
+          <h3>Idea clave</h3>
+          <p>
+            Una variable aleatoria traduce resultados de un experimento aleatorio a números,
+            permitiendo analizarlos matemáticamente.
+          </p>
+        </article>
+      </div>
+
+      <div class="compare">
+        <article class="compare-card">
+          <span class="chip">DISCRETA</span>
+          <h3>Se obtiene al contar</h3>
+          <p>Sus valores posibles son finitos o numerables.</p>
+          <ul>
+            <li>Cantidad de clientes por hora.</li>
+            <li>Número de caras al lanzar tres monedas.</li>
+            <li>Cantidad de pedidos de delivery.</li>
+          </ul>
+          <div class="mini-formula">X ∈ {0, 1, 2, 3, …}</div>
+        </article>
+
+        <article class="compare-card">
+          <span class="chip">CONTINUA</span>
+          <h3>Se obtiene al medir</h3>
+          <p>Puede tomar cualquier valor dentro de un intervalo real.</p>
+          <ul>
+            <li>Tiempo de resolución de un examen.</li>
+            <li>Masa o peso de un producto.</li>
+            <li>Tiempo de respuesta de un servidor.</li>
+          </ul>
+          <div class="mini-formula">Y ∈ (0, ∞)</div>
+        </article>
+      </div>
+
+      <div class="activity-box">
+        <div>
+          <span class="eyebrow">ACTIVIDAD RÁPIDA</span>
+          <h3>Una heladería registra la cantidad de pedidos con delivery durante una noche.</h3>
+          <p>¿Qué tipo de variable aleatoria es?</p>
+        </div>
+
+        <div class="answer-buttons">
+          <button class="answer-btn" data-answer="correct">Discreta</button>
+          <button class="answer-btn" data-answer="wrong">Continua</button>
+        </div>
+
+        <div id="quickFeedback" class="feedback" aria-live="polite"></div>
+      </div>
+
+      <div class="video-block">
+        <div class="video-info">
+          <span class="eyebrow">RECURSO AUDIOVISUAL</span>
+          <h3>Variables Aleatorias – Clase 0 – Introducción</h3>
+          <p>
+            El recurso vincula la probabilidad con conceptos posteriores como función de
+            probabilidad o densidad, distribución acumulada, esperanza y varianza.
+          </p>
+          <p class="source">Fuente: Ronny Vallejos</p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/8kAyXObLkac"
+            title="Variables Aleatorias - Introducción"
+            loading="lazy"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="discretas" class="section alt">
+      <div class="section-heading">
+        <span class="eyebrow">MÓDULO 2</span>
+        <h2>Variables aleatorias discretas</h2>
+        <p>
+          En una variable discreta, la probabilidad puede asignarse a valores puntuales
+          y luego acumularse.
+        </p>
+      </div>
+
+      <div class="formula-grid">
+        <article class="formula-panel">
+          <span class="formula-label">FUNCIÓN DE PROBABILIDAD</span>
+          <div class="big-formula">p(x) = P(X = x)</div>
+          <p>Asigna a cada valor posible de X la probabilidad exacta de que ocurra.</p>
+          <div class="property">0 ≤ P(X = x) ≤ 1</div>
+          <div class="property">Σ P(X = x) = 1</div>
+        </article>
+
+        <article class="formula-panel">
+          <span class="formula-label">FUNCIÓN ACUMULATIVA</span>
+          <div class="big-formula">F(x) = P(X ≤ x)</div>
+          <p>Suma las probabilidades correspondientes a los valores menores o iguales que x.</p>
+          <div class="property">0 ≤ F(x) ≤ 1</div>
+          <div class="property">F(a) ≤ F(b), si a ≤ b</div>
+        </article>
+      </div>
+
+      <article class="example-card">
+        <div class="example-title">
+          <span class="eyebrow">EJEMPLO APLICADO</span>
+          <h3>Llamadas recibidas por un operador en 15 minutos</h3>
+        </div>
+
+        <p><strong>X</strong> = número de llamadas recibidas por el operador en 15 minutos.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>x</th>
+                <th>P(X = x)</th>
+                <th>F(x) = P(X ≤ x)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>0,10</td><td>0,10</td></tr>
+              <tr><td>1</td><td>0,40</td><td>0,50</td></tr>
+              <tr><td>2</td><td>0,35</td><td>0,85</td></tr>
+              <tr><td>3</td><td>0,15</td><td>1,00</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="interpret-grid">
+          <div><strong>P(X = 2) = 0,35</strong><span>35 % de probabilidad de recibir exactamente dos llamadas.</span></div>
+          <div><strong>F(1) = 0,50</strong><span>50 % de probabilidad de recibir como máximo una llamada.</span></div>
+          <div><strong>F(2) = 0,85</strong><span>85 % de probabilidad de recibir como máximo dos llamadas.</span></div>
+        </div>
+      </article>
+
+      <div class="video-block">
+        <div class="video-info">
+          <span class="eyebrow">RECURSO AUDIOVISUAL</span>
+          <h3>Función de distribución acumulativa de una variable aleatoria discreta</h3>
+          <p>
+            Permite observar cómo se construye una tabla acumulada a partir de probabilidades
+            puntuales y cómo se interpreta su gráfico escalonado.
+          </p>
+          <p class="source">Fuente: MateMovil</p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/OftL6S127wc"
+            title="Función acumulativa discreta"
+            loading="lazy"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="continuas" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">MÓDULO 3</span>
+        <h2>Variables aleatorias continuas</h2>
+        <p>
+          Una variable continua puede tomar infinitos valores dentro de un intervalo.
+          La probabilidad se interpreta como un área bajo una curva de densidad.
+        </p>
+      </div>
+
+      <div class="density-layout">
+        <article class="formula-panel">
+          <span class="formula-label">FUNCIÓN DE DENSIDAD</span>
+          <div class="big-formula">P(a ≤ X ≤ b) = ∫<sub>a</sub><sup>b</sup> f(x) dx</div>
+          <p>El valor de f(x) en un punto no representa directamente una probabilidad.</p>
+          <div class="property">f(x) ≥ 0</div>
+          <div class="property">∫ f(x) dx = 1</div>
+          <div class="property">P(X = x) = 0</div>
+        </article>
+
+        <article class="curve-card">
+          <div class="curve">
+            <div class="curve-fill"></div>
+            <div class="curve-line"></div>
+            <div class="axis x-axis"></div>
+            <div class="axis y-axis"></div>
+            <span class="axis-label x-label">x</span>
+            <span class="axis-label y-label">f(x)</span>
+          </div>
+          <p><strong>Densidad → Área → Probabilidad</strong></p>
+        </article>
+      </div>
+
+      <article class="example-card">
+        <div class="example-title">
+          <span class="eyebrow">EJEMPLO APLICADO</span>
+          <h3>Tiempo de respuesta de un servidor web</h3>
+        </div>
+
+        <p>
+          Sea X el tiempo de respuesta del servidor en milisegundos, con valores entre 0 y 4.
+          La función de densidad es:
+        </p>
+
+        <div class="piecewise">
+          f(x) = x/8 &nbsp; para 0 ≤ x ≤ 4; &nbsp; 0 en otro caso.
+        </div>
+
+        <div class="calc-box">
+          <span>Queremos calcular</span>
+          <strong>P(X ≤ 2)</strong>
+          <div>P(X ≤ 2) = ∫<sub>0</sub><sup>2</sup> x/8 dx = 0,25</div>
+        </div>
+
+        <p class="callout">
+          <strong>Interpretación:</strong> existe un 25 % de probabilidad de que el servidor
+          responda en 2 milisegundos o menos.
+        </p>
+      </article>
+
+      <div class="video-block">
+        <div class="video-info">
+          <span class="eyebrow">RECURSO AUDIOVISUAL</span>
+          <h3>Función de densidad y función de distribución</h3>
+          <p>
+            Muestra cómo calcular probabilidades en variables continuas utilizando la función
+            de densidad y la distribución acumulativa.
+          </p>
+          <p class="source">Fuente: Andrés Camacho García – UPV</p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/E3AG2Az8vYM"
+            title="Función de densidad y distribución"
+            loading="lazy"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="medidas" class="section alt">
+      <div class="section-heading">
+        <span class="eyebrow">MÓDULO 4</span>
+        <h2>Características de las variables aleatorias</h2>
+        <p>
+          Estas medidas permiten analizar el valor esperado, la dispersión y la relación
+          entre variables.
+        </p>
+      </div>
+
+      <div class="measure-grid">
+        <article class="measure-card">
+          <span class="number">01</span>
+          <h3>Esperanza</h3>
+          <p>Representa el valor promedio teórico esperado a largo plazo.</p>
+          <div class="mini-formula">E(X) = Σ xᵢP(X = xᵢ)</div>
+          <span class="tag">Valor esperado</span>
+        </article>
+
+        <article class="measure-card">
+          <span class="number">02</span>
+          <h3>Varianza</h3>
+          <p>Mide cuánto se dispersan los valores respecto de la esperanza.</p>
+          <div class="mini-formula">Var(X) = E[(X − μ)²]</div>
+          <span class="tag">Dispersión</span>
+        </article>
+
+        <article class="measure-card">
+          <span class="number">03</span>
+          <h3>Desvío estándar</h3>
+          <p>Es la raíz cuadrada de la varianza y conserva las unidades originales.</p>
+          <div class="mini-formula">σ = √Var(X)</div>
+          <span class="tag">Dispersión</span>
+        </article>
+
+        <article class="measure-card">
+          <span class="number">04</span>
+          <h3>Covarianza</h3>
+          <p>Permite estudiar cómo varían conjuntamente dos variables.</p>
+          <div class="mini-formula">Cov(X,Y) = E[(X−E(X))(Y−E(Y))]</div>
+          <span class="tag">Relación</span>
+        </article>
+
+        <article class="measure-card">
+          <span class="number">05</span>
+          <h3>Correlación</h3>
+          <p>Mide la dirección y la intensidad de la relación lineal.</p>
+          <div class="mini-formula">ρ = Cov(X,Y)/(σXσY)</div>
+          <span class="tag">−1 ≤ ρ ≤ 1</span>
+        </article>
+      </div>
+
+      <article class="example-card">
+        <div class="example-title">
+          <span class="eyebrow">EJEMPLO INTEGRADOR</span>
+          <h3>Horas de estudio y calificaciones</h3>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Estudiante</th><th>Horas de estudio (X)</th><th>Calificación (Y)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>1</td><td>4</td></tr>
+              <tr><td>2</td><td>2</td><td>5</td></tr>
+              <tr><td>3</td><td>3</td><td>7</td></tr>
+              <tr><td>4</td><td>4</td><td>8</td></tr>
+              <tr><td>5</td><td>5</td><td>10</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="results-grid">
+          <div><span>Esperanza X</span><strong>3</strong></div>
+          <div><span>Esperanza Y</span><strong>6,8</strong></div>
+          <div><span>Varianza X</span><strong>2</strong></div>
+          <div><span>Varianza Y</span><strong>4,56</strong></div>
+          <div><span>Desvío X</span><strong>1,41</strong></div>
+          <div><span>Desvío Y</span><strong>2,14</strong></div>
+          <div><span>Covarianza</span><strong>3</strong></div>
+          <div><span>Correlación</span><strong>≈ 0,99</strong></div>
+        </div>
+
+        <p class="callout">
+          La correlación cercana a 1 indica una relación lineal positiva muy fuerte entre
+          las horas de estudio y las calificaciones en estos cinco casos.
+        </p>
+      </article>
+
+      <div class="video-block">
+        <div class="video-info">
+          <span class="eyebrow">RECURSO AUDIOVISUAL INTERACTIVO</span>
+          <h3>Características de las variables aleatorias</h3>
+          <p>
+            Recurso elaborado con apoyo de Inteligencia Artificial que integra esperanza,
+            varianza, desvío estándar, covarianza y correlación.
+          </p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/w6Ybm3MECbs"
+            title="Características de las variables aleatorias"
+            loading="lazy"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="laboratorio" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">LABORATORIO</span>
+        <h2>Probalo en R</h2>
+        <p>
+          Estos fragmentos reproducen los ejemplos trabajados en el informe del grupo.
+          Podés copiarlos y ejecutarlos en RStudio o en un entorno compatible.
+        </p>
+      </div>
+
+      <div class="code-tabs">
+        <button class="tab-btn active" data-tab="codigoDiscreto">Ejemplo discreto</button>
+        <button class="tab-btn" data-tab="codigoContinuo">Ejemplo continuo</button>
+        <button class="tab-btn" data-tab="codigoMedidas">Medidas</button>
+      </div>
+
+      <div id="codigoDiscreto" class="code-panel active">
+<pre><code># Valores posibles de la variable
+x &lt;- c(0, 1, 2, 3)
+
+# Función de probabilidad
+prob_puntual &lt;- c(0.10, 0.40, 0.35, 0.15)
+
+# Función de distribución acumulativa
+prob_acumulada &lt;- cumsum(prob_puntual)
+
+# Tabla
+tabla_distribucion &lt;- data.frame(
+  X = x,
+  "P(X=x)" = prob_puntual,
+  "F(x)=P(X&lt;=x)" = prob_acumulada
+)
+
+print(tabla_distribucion)</code></pre>
+      </div>
+
+      <div id="codigoContinuo" class="code-panel">
+<pre><code># Función de densidad
+densidad &lt;- function(x) {
+  ifelse(x &gt;= 0 &amp; x &lt;= 4, x / 8, 0)
+}
+
+# Calcular P(X &lt;= 2)
+probabilidad &lt;- integrate(
+  densidad,
+  lower = 0,
+  upper = 2
+)
+
+resultado_prob &lt;- probabilidad$value
+resultado_prob</code></pre>
+      </div>
+
+      <div id="codigoMedidas" class="code-panel">
+<pre><code># Datos
+horas &lt;- c(1, 2, 3, 4, 5)
+notas &lt;- c(4, 5, 7, 8, 10)
+
+n &lt;- length(horas)
+
+# Esperanza / media
+media_horas &lt;- mean(horas)
+media_notas &lt;- mean(notas)
+
+# Varianza dividiendo por n
+var_horas &lt;- sum((horas - media_horas)^2) / n
+var_notas &lt;- sum((notas - media_notas)^2) / n
+
+# Desvío estándar
+desvio_horas &lt;- sqrt(var_horas)
+desvio_notas &lt;- sqrt(var_notas)
+
+# Covarianza
+covarianza &lt;- sum(
+  (horas - media_horas) *
+  (notas - media_notas)
+) / n
+
+# Correlación
+correlacion &lt;- covarianza /
+  (desvio_horas * desvio_notas)
+
+media_horas
+media_notas
+var_horas
+var_notas
+desvio_horas
+desvio_notas
+covarianza
+correlacion</code></pre>
+      </div>
+    </section>
+
+    <section id="evaluacion" class="section alt">
+      <div class="section-heading">
+        <span class="eyebrow">AUTOEVALUACIÓN</span>
+        <h2>Comprobá lo aprendido</h2>
+        <p>Respondé las preguntas y presioná “Corregir”.</p>
+      </div>
+
+      <form id="quiz" class="quiz">
+        <fieldset class="question" data-correct="b">
+          <legend>1. Una variable aleatoria discreta se caracteriza porque…</legend>
+          <label><input type="radio" name="q1" value="a"> puede tomar cualquier valor real de un intervalo.</label>
+          <label><input type="radio" name="q1" value="b"> sus valores posibles son finitos o numerables.</label>
+          <label><input type="radio" name="q1" value="c"> siempre tiene valores negativos.</label>
+        </fieldset>
+
+        <fieldset class="question" data-correct="a">
+          <legend>2. La función F(x) = P(X ≤ x) representa…</legend>
+          <label><input type="radio" name="q2" value="a"> la probabilidad acumulada hasta x.</label>
+          <label><input type="radio" name="q2" value="b"> solamente la probabilidad de X = x.</label>
+          <label><input type="radio" name="q2" value="c"> el desvío estándar.</label>
+        </fieldset>
+
+        <fieldset class="question" data-correct="c">
+          <legend>3. En una variable aleatoria continua, P(X = x) es…</legend>
+          <label><input type="radio" name="q3" value="a"> siempre 1.</label>
+          <label><input type="radio" name="q3" value="b"> igual a f(x).</label>
+          <label><input type="radio" name="q3" value="c"> igual a 0.</label>
+        </fieldset>
+
+        <fieldset class="question" data-correct="b">
+          <legend>4. ¿Qué medida describe la dispersión en las mismas unidades de la variable?</legend>
+          <label><input type="radio" name="q4" value="a"> varianza.</label>
+          <label><input type="radio" name="q4" value="b"> desvío estándar.</label>
+          <label><input type="radio" name="q4" value="c"> esperanza.</label>
+        </fieldset>
+
+        <fieldset class="question" data-correct="c">
+          <legend>5. Una correlación cercana a 1 indica…</legend>
+          <label><input type="radio" name="q5" value="a"> una relación lineal negativa fuerte.</label>
+          <label><input type="radio" name="q5" value="b"> ausencia total de relación.</label>
+          <label><input type="radio" name="q5" value="c"> una relación lineal positiva muy fuerte.</label>
+        </fieldset>
+
+        <button type="submit" class="btn primary">Corregir evaluación</button>
+        <button type="button" id="resetQuiz" class="btn secondary">Reintentar</button>
+      </form>
+
+      <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+    </section>
+
+    <section class="section ia-section">
+      <div class="ia-card">
+        <div>
+          <span class="eyebrow">USO DE INTELIGENCIA ARTIFICIAL</span>
+          <h2>IA como herramienta de apoyo</h2>
+        </div>
+        <p>
+          Para la elaboración del trabajo y de este entorno se utilizó Inteligencia Artificial
+          como apoyo para organizar contenidos, comprender conceptos, elaborar ejemplos,
+          orientar resoluciones en R y presentar la información de una manera más clara
+          e interactiva. La información fue revisada antes de incorporarse al trabajo.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Unidad 2 · Probabilidad</strong>
+      <span>Licenciatura y Tecnicatura en Ciencia de Datos · 2026</span>
+    </div>
+    <a href="#inicio">Volver al inicio ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
